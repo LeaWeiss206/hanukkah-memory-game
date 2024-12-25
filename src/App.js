@@ -10,19 +10,24 @@ import WinnerScreen from "./components/WinnerScreen";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <h1>משחק זיכרון חנוכה</h1>
-        <Routes>
-          <Route path="/" element={<GameBoard />} />
-          <Route
-            path="/winner/:winnerName"
-            element={<WinnerScreen />}
-          />
-        </Routes>
-        <PlayerForm />
-      </Router>
-    </Provider>
+    <div className="App">
+      <Provider store={store}>
+        <Router>
+          <div className="game-container">
+            <div className="game-board">
+              <h1>משחק זיכרון חנוכה</h1>
+              <Routes>
+                <Route path="/" element={<GameBoard />} />
+                <Route path="/winner/:winnerName" element={<WinnerScreen />} />
+              </Routes>
+            </div>
+            <div className="player-form">
+              <PlayerForm />
+            </div>
+          </div>
+        </Router>
+      </Provider>
+    </div>
   );
 }
 

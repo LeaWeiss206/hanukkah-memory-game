@@ -1,19 +1,4 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -23,6 +8,26 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.game-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.game-board {
+  flex: 3; /* הקצה יותר שטח ללוח המשחק */
+  padding: 20px;
+}
+
+.player-form {
+  flex: 1; /* הקצה פחות שטח לטופס */
+  padding: 20px;
+  text-align: left; /* מיוחד לטופס */
+  border-left: 2px solid #ddd; /* הוספת גבול להפרדה בין הלוח לטופס */
+}
+
+
 
 .App-link {
   color: #61dafb;
@@ -37,7 +42,6 @@
   }
 }
 .mb-4{
-  width: 40%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -57,12 +61,12 @@
 
 .winner-screen h1 {
   font-size: 3em;
-  color: #ff5733; /* צבע חגיגי */
+  color: #ff5733; 
 }
 
 .winner-screen h2 {
   font-size: 2em;
-  color: #4caf50; /* צבע נחמד להדגשה */
+  color: #4caf50; 
 }
 
 .winner-screen button {
@@ -84,5 +88,6 @@
 }
 
 .card.flipped {
-  background-color: #ffcc00;
+  background-color: #937a17;
+  color:white;
 }
