@@ -38,7 +38,7 @@ function PlayerForm() {
 
                     {players.map((player, index) => (
                         <ListGroup.Item action variant="dark" key={index}>
-                            {player.name}
+                            {player.name} {player.points}
                         </ListGroup.Item>
                     ))}
                 </ListGroup>

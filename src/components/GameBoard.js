@@ -24,14 +24,21 @@ const GameBoard = () => {
                 return;
             }
             else{
-                winner = players.reduce((prev, current) => {
-                    return prev.points > current.points ? prev : current;
-                });
+            const maxPoints = Math.max(...players.map((player) => player.points));
+            console.log(maxPoints);
+            const winners = players.filter((player) => player.points === maxPoints);
+            console.log(winners);
+            if (winners.length === 1) {
+                winner = winners[0].name; 
+                console.log(winner);
+            } else {
+                winner = winners.map((player) => player.name).join(", ");
+                console.log(winner);
+            }
             }
            
             setGameOver(true); 
-            debugger
-            navigate(`/winner/${winner.name}`);
+            navigate(`/winner/${winner}`);
         }
     };
 
@@ -56,7 +63,7 @@ const GameBoard = () => {
                 // אם יש התאמה
                 dispatch(addPoint());
                 setTimeout(() => {
-                    dispatch(matchCards([firstCard.id, id]));                 
+                    dispatch(matchCards([firstCard.id, id]));   
                     dispatch(nextPlayer());
                 }, 500);
             } else {
@@ -82,7 +89,7 @@ const GameBoard = () => {
     else
         return (
             <div>
-                <h2>תורו של {players[currentPlayerIndex]?.name || "שחקן לא ידוע"}</h2>
+                <h2>התור של {players[currentPlayerIndex]?.name || "שחקן לא ידוע"}</h2>
                 <div className="row">
                     {cards.map((card) => (
                         <div key={card.id} className="col-3 mb-3">

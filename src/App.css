@@ -1,93 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Beastly:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Marker+Hatch&family=Rubik+Spray+Paint&display=swap');
 .App {
-  background-color: #282c34;
+  background: linear-gradient(to bottom, #1e3c72, #2a5298); /* גווני כחול מדהימים */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ffd700; 
 }
+
+h1 {
+  font-family: 'Rubik Beastly', sans-serif;
+  color: #ffd700;
+  font-size: 130px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
 .game-container {
   display: flex;
+  width: 100%;
+  height: 85vh;
   flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1); /* רקע שקוף קל */
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .game-board {
-  flex: 3; /* הקצה יותר שטח ללוח המשחק */
+  flex: 3;
   padding: 20px;
 }
 
 .player-form {
-  flex: 1; /* הקצה פחות שטח לטופס */
+  align-items: center;
+  text-align: center;
+  flex: 1;
   padding: 20px;
-  text-align: left; /* מיוחד לטופס */
-  border-left: 2px solid #ddd; /* הוספת גבול להפרדה בין הלוח לטופס */
+  height: 70%;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
-
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.mb-4{
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.form-control{
-  width: 90%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.winner-screen {
-  text-align: center;
-  margin-top: 50px;
-  font-family: "Arial", sans-serif;
-}
-
-.winner-screen h1 {
-  font-size: 3em;
-  color: #ff5733; 
-}
-
-.winner-screen h2 {
-  font-size: 2em;
-  color: #4caf50; 
-}
-
-.winner-screen button {
-  margin-top: 20px;
-  font-size: 1.5em;
-}
-
+/* כרטיסים */
 .card {
-  width: 100px;
-  height: 100px;
-  background-color: #f0f0f0;
+  width: 120px;   /* גודל קבוע */
+  height: auto;
+  aspect-ratio: 1;
+  margin: 10px;
+  background: #f5f5f5; /* צבע רקע לבן */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 2rem;
-  border-radius: 5px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem; /* שינוי הגודל של הטקסט אם יש צורך */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative; /* חשוב למנוע בעיות סידור */
+  overflow: hidden;  /* מונע ממידות התוכן לשנות את גודל הכרטיס */
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* מוודא שהטקסט במרכז */
+  overflow: hidden;
+}
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .card.flipped {
-  background-color: #937a17;
-  color:white;
+  background: #937a17; /* זהב */
+  color: white;
+}
+
+/* אנימציה לחגיגות */
+.winner-screen h1 {
+  font-size: 3.5em;
+  color: #ffd700; /* זהב */
+  text-shadow: 2px 2px 8px #000, 0 0 20px #ffd700;
+  animation: glow 1.5s infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 2px 2px 8px #000, 0 0 20px #ffd700, 0 0 30px #ffd700;
+  }
+  50% {
+    text-shadow: 2px 2px 8px #000, 0 0 25px #ffdf70, 0 0 35px #ffdf70;
+  }
+}
+
+/* כפתורים */
+button {
+  background: linear-gradient(to right, #ffd700, #f7a32b); /* מעבר צבעים זהוב */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+}
+
+input.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #ffd700; /* זהב */
+  border-radius: 5px;
+  color: white;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+input::placeholder {
+  color: #ffd700; /* זהב */
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #ffdf70; /* זהב זוהר */
+  background: rgba(255, 255, 255, 0.3);
 }

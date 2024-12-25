@@ -1,8 +1,18 @@
 const initialState = {
     players: [],
     currentPlayerIndex: 0,
-    cards: [{id: 1,value:"🕯️",revealed: false,matched: false }, {id: 2,value:"🕯️",revealed: false, matched: false }, {id: 3, value:"🔥",revealed: false,matched: false  }, {id: 4,value:"🔥",revealed: false,matched: false }, 
-        {id: 5,value:"🕎",revealed: false,matched: false }, {id:6 ,value:"🕎",revealed: false, matched: false }],
+    cards: [{id: 1,value:1,showVal:"ברכי ושירה",revealed: false,matched: false }, 
+        {id: 2,value:2,showVal:"🕯️",revealed: false, matched: false }, 
+        {id: 3, value:3,showVal:"🔥",revealed: false,matched: false  }, 
+        {id: 4,value:4,showVal:"🔥",revealed: false,matched: false }, 
+        {id:9, value:3,showVal:"🔥",revealed: false,matched: false  },
+        {id: 11,value:5,showVal:"🕎",revealed: false,matched: false },
+        {id: 10,value:4,showVal:"🔥",revealed: false,matched: false }, 
+        {id:12 ,value:6,showVal:"🕎",revealed: false, matched: false },
+        {id: 5,value:5,showVal:"🕎",revealed: false,matched: false },
+        {id: 7,value:2,showVal:"🕯️",revealed: false, matched: false }, 
+        {id:6 ,value:6,showVal:"🕎",revealed: false, matched: false },
+        {id: 8,value:1,showVal:"נתקעו במעלית ב M & S",revealed: false,matched: false }],
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -28,10 +38,11 @@ export const gameReducer = (state = initialState, action) => {
             };
 
         case "ADD_POINT":
+            debugger
             return {
                 ...state,
                 players: state.players.map((player, index) =>
-                    index === state.currentPlayer
+                    index === state.currentPlayerIndex
                         ? { ...player, points: player.points + 1 }
                         : player
                 ),
